@@ -2,6 +2,9 @@ FROM python:3.7.9
 ARG PRODUCTION=true
 ARG EXTRA_PIP_INSTALLS=""
 
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+
 ## Install Querybook package requirements + NodeJS
 # Installing build-essential and python-dev for uwsgi
 RUN rm -rf /var/lib/apt/lists/* \

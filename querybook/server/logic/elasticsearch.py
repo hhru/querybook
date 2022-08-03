@@ -45,6 +45,8 @@ from logic.query_execution import (
 from models.user import User
 from models.datadoc import DataCellType
 
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 LOG = get_logger(__file__)
 ES_CONFIG = get_config_value("elasticsearch")
@@ -55,7 +57,11 @@ def get_hosted_es():
     hosted_es = None
 
     if QuerybookSettings.ELASTICSEARCH_CONNECTION_TYPE == "naive":
-        hosted_es = Elasticsearch(hosts=QuerybookSettings.ELASTICSEARCH_HOST)
+        hosted_es = Elasticsearch(
+            hosts=QuerybookSettings.ELASTICSEARCH_HOST,
+            use_ssl=QuerybookSettings.ELASTICSEARCH_USE_SSL,
+            verify_certs=QuerybookSettings.ELASTICSEARCH_VERIFY_CERTS
+        )
     elif QuerybookSettings.ELASTICSEARCH_CONNECTION_TYPE == "aws":
 
         # TODO: generialize aws region setup
