@@ -49,4 +49,4 @@ querybook/webapp/coverage/
 .cache-loader
 build
 
-requirements/local.txt
+# requirements/local.txt

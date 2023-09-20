@@ -2,6 +2,7 @@ from lib.utils.import_helper import import_module_with_default, import_modules
 
 PROVIDED_METASTORE_LOADERS = import_modules(
     [
+        ("lib.metastore.loaders.hive_sqlalchemy_loader", "HiveSqlAlchemyLoader"),
         ("lib.metastore.loaders.hive_metastore_loader", "HMSMetastoreLoader"),
         ("lib.metastore.loaders.mysql_metastore_loader", "MysqlMetastoreLoader"),
         (
