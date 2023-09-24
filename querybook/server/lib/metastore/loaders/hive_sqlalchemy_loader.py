@@ -4,7 +4,9 @@ from sqlalchemy import text
 
 from lib.metastore.base_metastore_loader import DataTable, DataColumn
 from lib.metastore.loaders.sqlalchemy_metastore_loader import SqlAlchemyMetastoreLoader
+from lib.logger import get_logger
 
+LOG = get_logger(__name__)
 
 class HiveSqlAlchemyLoader(SqlAlchemyMetastoreLoader):
     def get_all_schema_names(self) -> List[str]:
@@ -80,5 +82,6 @@ class HiveSqlAlchemyLoader(SqlAlchemyMetastoreLoader):
             )
 
         columns = list(map(row_converter, list(columns_result) + list(partitions_result)))
+        LOG.info("Got data for table %d" % table)
 
         return table, columns
