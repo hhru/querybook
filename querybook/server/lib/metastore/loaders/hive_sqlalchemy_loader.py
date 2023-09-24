@@ -82,6 +82,6 @@ class HiveSqlAlchemyLoader(SqlAlchemyMetastoreLoader):
             )
 
         columns = list(map(row_converter, list(columns_result) + list(partitions_result)))
-        LOG.info(f'Got data for table {table}: {len(columns)}')
+        LOG.info(f'Got data for schema {schema_name} table {table} columns num: {len(columns)}')
 
         return table, columns
