@@ -65,7 +65,7 @@ def get_matching_objects(query: Union[str, Dict], index_name, get_count=False):
     try:
         result = get_hosted_es().search(index=index_name, body=query)
     except Exception as e:
-        LOG.warning("Got ElasticSearch exception: \n " + str(e))
+        LOG.warning("Got ElasticSearch exception: \n " + str(e) + "\n query:\n" + str(query))
 
     if result is None:
         LOG.debug("No Elasticsearch attempt succeeded")
