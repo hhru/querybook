@@ -206,15 +206,12 @@ tables:
                 name:
                     type: keyword
                     normalizer: case_insensitive
-                    fielddata: true
                 full_name:
                     type: text
                     analyzer: table_name_lowercase
-                    fielddata: true
                 full_name_ngram:
                     type: text
                     analyzer: edge_ngram_lowercase
-                    fielddata: true
                 completion_name:
                     type: completion
                     analyzer: keyword
@@ -224,7 +221,6 @@ tables:
                 description:
                     type: text
                     analyzer: user_content_analyzer
-                    fielddata: true
                 created_at:
                     type: long
                 columns:
@@ -233,14 +229,12 @@ tables:
                 column_descriptions:
                     type: text
                     analyzer: user_content_analyzer
-                    fielddata: true
                 data_elements:
                     type: keyword
                     normalizer: case_insensitive
                 data_element_descriptions:
                     type: text
                     analyzer: user_content_analyzer
-                    fielddata: true
                 golden:
                     type: boolean
                 importance_score:
